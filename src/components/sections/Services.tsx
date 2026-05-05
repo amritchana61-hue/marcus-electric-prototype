@@ -19,7 +19,7 @@ export const Services = () => {
         </Reveal>
 
         <motion.div 
-          className="grid gap-6"
+          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -46,11 +46,11 @@ export const Services = () => {
                   translateY: -5,
                   transition: { delay: (i * 0.15) + 0.5, duration: 0.4 }
                 }}
-                className="group relative rounded-xl border border-border bg-surface-2 transition-all duration-700 overflow-hidden"
+                className="group relative rounded-xl border border-border bg-surface-2 transition-all duration-700 overflow-hidden h-full"
               >
-                <div className="flex flex-col sm:flex-row min-h-[140px]">
-                  {/* Left Section: Branding */}
-                  <div className="flex items-center gap-4 p-6 sm:w-1/3 sm:border-r border-border/50 bg-background/20">
+                <div className="flex flex-col h-full">
+                  {/* Header Section: Branding */}
+                  <div className="flex items-center gap-4 p-6 border-b border-border/50 bg-background/20">
                     <motion.div
                       whileInView={{ 
                         color: "hsl(var(--primary))",
@@ -61,18 +61,18 @@ export const Services = () => {
                     >
                       <Icon className="h-6 w-6" />
                     </motion.div>
-                    <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+                    <h3 className="font-display text-xl lg:text-2xl font-bold text-foreground">
                       {s.title}
                     </h3>
                   </div>
 
-                  {/* Right Section: Details */}
-                  <div className="flex-1 p-6 flex items-center">
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 w-full">
+                  {/* Body Section: Details */}
+                  <div className="flex-1 p-6">
+                    <ul className="space-y-3">
                       {s.items.map((it) => (
                         <li key={it} className="flex items-center gap-3 text-sm text-foreground-muted">
-                          <Check className="h-4 w-4 text-primary" />
-                          <span className="whitespace-nowrap">{it}</span>
+                          <Check className="h-4 w-4 text-primary shrink-0" />
+                          <span className="leading-tight">{it}</span>
                         </li>
                       ))}
                     </ul>
@@ -84,7 +84,7 @@ export const Services = () => {
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.5 }}
-                  className="absolute inset-0 pointer-events-none bg-gradient-to-r from-primary/5 to-transparent"
+                  className="absolute inset-0 pointer-events-none bg-gradient-to-b from-primary/5 to-transparent"
                 />
               </motion.article>
             );
