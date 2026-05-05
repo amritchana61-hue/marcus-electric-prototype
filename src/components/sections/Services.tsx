@@ -1,52 +1,79 @@
-import { Check, Home, Building2, TreePine, ArrowUpRight } from "lucide-react";
+import { Check, Home, Building2, TreePine } from "lucide-react";
 import { SERVICES } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
+import { motion } from "framer-motion";
 
 const ICONS = [Home, Building2, TreePine];
 
 export const Services = () => {
   return (
-    <section id="services" className="py-20 md:py-28">
+    <section id="services" className="py-20 md:py-28 overflow-hidden">
       <div className="container">
         <Reveal>
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center mb-16">
             <span className="text-xs font-semibold tracking-widest uppercase text-primary">What we do</span>
             <h2 className="font-display mt-3 text-3xl sm:text-4xl md:text-5xl font-bold text-balance">
               Electrical work, done properly.
             </h2>
-            <p className="mt-4 text-foreground-muted text-pretty">
-              Three focused services. Every job ESA-compliant, fully documented, and warrantied.
-            </p>
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6">
           {SERVICES.map((s, i) => {
             const Icon = ICONS[i];
             return (
-              <Reveal key={s.title} delay={i * 100}>
-                <article className="group relative rounded-xl border border-border bg-surface-2 p-6 transition-all duration-300 hover:border-primary/40 hover:-translate-y-1 hover:shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)] h-full">
-                  <div className="flex items-start justify-between">
-                    <span className="grid h-12 w-12 place-items-center rounded-md border border-border bg-background text-foreground transition-all duration-300 group-hover:text-primary group-hover:border-primary/40 group-hover:shadow-[inset_0_0_18px_hsl(var(--primary)/0.25)]">
-                      <Icon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
-                    </span>
-                    <ArrowUpRight className="h-5 w-5 text-foreground-subtle transition-all duration-300 group-hover:text-primary group-hover:rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <motion.article 
+                key={s.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0,
+                  borderColor: "hsl(var(--primary))",
+                  translateY: -5
+                }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group relative rounded-xl border border-border bg-surface-2 transition-all duration-500 overflow-hidden"
+              >
+                <div className="flex flex-col sm:flex-row min-h-[140px]">
+                  {/* Left Section: Branding */}
+                  <div className="flex items-center gap-4 p-6 sm:w-1/3 sm:border-r border-border/50 bg-background/20">
+                    <motion.div
+                      whileInView={{ 
+                        color: "hsl(var(--primary))",
+                        filter: "drop-shadow(0 0 8px rgba(250, 204, 21, 0.4))"
+                      }}
+                      viewport={{ once: true }}
+                      className="grid h-12 w-12 shrink-0 place-items-center rounded-md border border-border bg-background"
+                    >
+                      <Icon className="h-6 w-6" />
+                    </motion.div>
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+                      {s.title}
+                    </h3>
                   </div>
-                  <h3 className="font-display mt-6 text-xl sm:text-2xl font-semibold text-foreground transition-colors group-hover:text-primary">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-foreground-muted">{s.blurb}</p>
 
-                  <ul className="mt-6 space-y-2.5 border-t border-border pt-5">
-                    {s.items.map((it) => (
-                      <li key={it} className="flex items-center gap-2.5 text-sm text-foreground-muted">
-                        <Check className="h-4 w-4 text-foreground-subtle transition-colors group-hover:text-primary" />
-                        {it}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </Reveal>
+                  {/* Right Section: Details */}
+                  <div className="flex-1 p-6 flex items-center">
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 w-full">
+                      {s.items.map((it) => (
+                        <li key={it} className="flex items-center gap-3 text-sm text-foreground-muted">
+                          <Check className="h-4 w-4 text-primary" />
+                          <span className="whitespace-nowrap">{it}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Subtle active state glow */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="absolute inset-0 pointer-events-none bg-gradient-to-r from-primary/5 to-transparent"
+                />
+              </motion.article>
             );
           })}
         </div>
