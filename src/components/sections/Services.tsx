@@ -18,22 +18,35 @@ export const Services = () => {
           </div>
         </Reveal>
 
-        <div className="grid gap-6">
+        <motion.div 
+          className="grid gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {SERVICES.map((s, i) => {
             const Icon = ICONS[i];
             return (
               <motion.article 
                 key={s.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ 
-                  opacity: 1, 
-                  y: 0,
-                  borderColor: "hsl(var(--primary))",
-                  translateY: -5
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  visible: { 
+                    opacity: 1, 
+                    y: 0,
+                    transition: { 
+                      duration: 0.8, 
+                      delay: i * 0.15,
+                      ease: [0.21, 0.47, 0.32, 0.98] 
+                    }
+                  }
                 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative rounded-xl border border-border bg-surface-2 transition-all duration-500 overflow-hidden"
+                whileInView={{ 
+                  borderColor: "hsl(var(--primary))",
+                  translateY: -5,
+                  transition: { delay: (i * 0.15) + 0.5, duration: 0.4 }
+                }}
+                className="group relative rounded-xl border border-border bg-surface-2 transition-all duration-700 overflow-hidden"
               >
                 <div className="flex flex-col sm:flex-row min-h-[140px]">
                   {/* Left Section: Branding */}
