@@ -1,4 +1,4 @@
-import { ArrowLeft, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
@@ -15,12 +15,6 @@ const PortfolioPage = () => {
           <div className="container">
             <Reveal>
               <div className="max-w-3xl">
-                <Button asChild variant="outline" size="sm" className="mb-8">
-                  <Link to="/">
-                    <ArrowLeft className="h-4 w-4" />
-                    Back Home
-                  </Link>
-                </Button>
                 <span className="text-xs font-semibold tracking-widest uppercase text-primary">Portfolio</span>
                 <h1 className="font-display mt-3 text-4xl sm:text-5xl md:text-7xl font-bold text-balance">
                   Recent electrical work across Toronto.
@@ -61,6 +55,21 @@ const PortfolioPage = () => {
                   </article>
                 </Reveal>
               ))}
+            </div>
+
+            <div className="mt-14 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+                <Link to="/">
+                  <ArrowLeft className="h-4 w-4" />
+                  Back Home
+                </Link>
+              </Button>
+              <Button asChild size="lg" className="w-full sm:w-auto">
+                <Link to="/#contact">
+                  Get Estimate
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
