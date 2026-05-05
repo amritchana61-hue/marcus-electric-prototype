@@ -1,29 +1,50 @@
-import { ShieldCheck, BadgeCheck, Clock, Hammer } from "lucide-react";
+import { ShieldCheck, BadgeCheck, Clock, Hammer, Star, MapPin, Zap } from "lucide-react";
 import { TRUST } from "@/lib/content";
-import { Reveal } from "@/components/Reveal";
+import { motion } from "framer-motion";
 
-const ICONS = [ShieldCheck, BadgeCheck, Clock, Hammer];
+const ICONS = [ShieldCheck, BadgeCheck, Clock, MapPin, Star, Zap, Hammer];
 
 export const TrustStrip = () => {
   return (
-    <section aria-label="Credentials" className="border-y border-border surface-1">
-      <div className="container py-6 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-5">
-        {TRUST.map((t, i) => {
-          const Icon = ICONS[i];
-          return (
-            <Reveal key={t.label} delay={i * 80}>
-              <div className="group flex items-center gap-3">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-border bg-surface-2 text-foreground transition-all group-hover:border-border-hover group-hover:text-primary">
-                  <Icon className="h-5 w-5 transition-transform group-hover:scale-110" />
-                </span>
+    <section aria-label="Credentials" className="border-y border-border surface-1 overflow-hidden">
+      <div className="container px-0 md:px-6">
+        <motion.div 
+          className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory py-6 gap-8 px-6 md:justify-center"
+          initial="initial"
+          animate="animate"
+        >
+          {TRUST.map((t, i) => {
+            const Icon = ICONS[i] || ShieldCheck;
+            return (
+              <motion.div 
+                key={t.label} 
+                className="flex-shrink-0 snap-center flex items-center gap-4 min-w-[140px] md:min-w-0"
+              >
+                <motion.div
+                  animate={{
+                    rotate: [0, -10, 10, -10, 10, 0],
+                    color: ["#ffffff", "#FACC15", "#FACC15", "#FACC15", "#FACC15", "#ffffff"],
+                    scale: [1, 1.1, 1.1, 1.1, 1.1, 1]
+                  }}
+                  transition={{
+                    duration: 1.2,
+                    repeat: Infinity,
+                    repeatDelay: TRUST.length * 1.5,
+                    delay: i * 1.5,
+                    ease: "easeInOut"
+                  }}
+                  className="shrink-0"
+                >
+                  <Icon className="h-6 w-6" />
+                </motion.div>
                 <div className="min-w-0">
-                  <div className="text-sm font-semibold text-foreground leading-tight">{t.label}</div>
-                  <div className="text-xs text-foreground-subtle truncate">{t.sub}</div>
+                  <div className="text-sm font-bold text-foreground leading-tight whitespace-nowrap">{t.label}</div>
+                  <div className="text-[10px] text-foreground-muted whitespace-nowrap">{t.sub}</div>
                 </div>
-              </div>
-            </Reveal>
-          );
-        })}
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );
