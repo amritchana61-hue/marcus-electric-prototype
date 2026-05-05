@@ -1,7 +1,11 @@
 import { Zap, ShieldCheck, BadgeCheck, Phone, Mail, MapPin } from "lucide-react";
 import { SITE, NAV, SERVICE_AREAS } from "@/lib/content";
+import { Link, useLocation } from "react-router-dom";
 
 export const Footer = () => {
+  const { pathname } = useLocation();
+  const sectionHref = (href: string) => (pathname === "/" ? href : `/${href}`);
+
   return (
     <footer className="border-t border-border surface-1">
       <div className="container py-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-b border-border text-sm">
@@ -16,12 +20,12 @@ export const Footer = () => {
 
       <div className="container py-12 grid gap-10 sm:grid-cols-2 md:grid-cols-4">
         <div className="sm:col-span-2 md:col-span-1">
-          <a href="#top" className="flex items-center gap-2 group">
+          <Link to={pathname === "/" ? "#top" : "/"} className="flex items-center gap-2 group">
             <span className="grid h-9 w-9 place-items-center rounded-md bg-primary/15 text-primary transition-transform group-hover:scale-105">
               <Zap className="h-5 w-5 fill-primary" />
             </span>
             <span className="font-display text-lg font-bold">Marcus Electric</span>
-          </a>
+          </Link>
           <p className="mt-4 text-sm text-foreground-muted max-w-xs">
             Professional electrical work for homes and businesses across Toronto and the GTA.
           </p>
@@ -33,7 +37,7 @@ export const Footer = () => {
             {NAV.map((n) => (
               <li key={n.href}>
                 <a
-                  href={n.href}
+                  href={sectionHref(n.href)}
                   className="text-sm text-foreground-muted hover:text-primary transition-colors inline-block hover:translate-x-0.5"
                 >
                   {n.label}

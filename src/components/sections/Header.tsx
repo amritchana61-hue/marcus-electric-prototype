@@ -3,11 +3,14 @@ import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NAV, SITE } from "@/lib/content";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showText, setShowText] = useState(false);
+  const { pathname } = useLocation();
+  const sectionHref = (href: string) => (pathname === "/" ? href : `/${href}`);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -25,7 +28,7 @@ export const Header = () => {
       }`}
     >
       <div className="container mx-auto flex h-full items-center justify-between">
-        <a href="#top" className="flex items-center gap-2 group relative">
+        <Link to={pathname === "/" ? "#top" : "/"} className="flex items-center gap-2 group relative">
           <motion.div
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -53,13 +56,13 @@ export const Header = () => {
               </motion.span>
             )}
           </AnimatePresence>
-        </a>
+        </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
           {NAV.map((n) => (
             <a
               key={n.href}
-              href={n.href}
+              href={sectionHref(n.href)}
               className="link-underline px-3 py-2 text-sm font-medium text-foreground-muted hover:text-foreground transition-colors"
             >
               {n.label}
@@ -79,7 +82,7 @@ export const Header = () => {
             {SITE.phone}
           </a>
           <Button asChild size="sm">
-            <a href="#contact">Get Estimate</a>
+            <a href={sectionHref("#contact")}>Get Estimate</a>
           </Button>
         </div>
 
@@ -115,7 +118,7 @@ export const Header = () => {
                 {NAV.map((n) => (
                   <a
                     key={n.href}
-                    href={n.href}
+                    href={sectionHref(n.href)}
                     onClick={() => setOpen(false)}
                     className="py-3 text-base font-medium text-foreground-muted hover:text-foreground transition-colors"
                   >
@@ -127,7 +130,7 @@ export const Header = () => {
                     <a href={SITE.phoneHref}>{SITE.phone}</a>
                   </Button>
                   <Button asChild size="sm">
-                    <a href="#contact" onClick={() => setOpen(false)}>Get Estimate</a>
+                    <a href={sectionHref("#contact")} onClick={() => setOpen(false)}>Get Estimate</a>
                   </Button>
                 </div>
               </nav>

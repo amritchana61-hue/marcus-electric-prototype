@@ -1,8 +1,10 @@
 import { PORTFOLIO } from "@/lib/content";
-import { MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Portfolio = () => {
   const isMobile = useIsMobile();
@@ -22,37 +24,45 @@ export const Portfolio = () => {
         </Reveal>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {PORTFOLIO.map((p, i) => (
-            <motion.article 
+          {PORTFOLIO.map((p) => (
+            <motion.article
               key={p.title}
-              initial={{ 
-                opacity: 0.6, 
-                y: 0, 
-                borderColor: "rgba(255,255,255,0.1)",
-                scale: 0.98
-              }}
-              whileInView={isMobile ? { 
-                opacity: 1, 
-                y: -12,
-                scale: 1,
-                borderColor: "hsl(var(--primary))",
-                boxShadow: "0 30px 60px -12px rgba(250, 204, 21, 0.25)"
-              } : { 
-                opacity: 1,
+              initial={{
+                opacity: 0.6,
                 y: 0,
-                scale: 1,
                 borderColor: "rgba(255,255,255,0.1)",
-                boxShadow: "none"
+                scale: 0.98,
               }}
-              whileHover={!isMobile ? {
-                y: -12,
-                borderColor: "hsl(var(--primary))",
-                boxShadow: "0 30px 60px -12px rgba(250, 204, 21, 0.25)"
-              } : {}}
+              whileInView={
+                isMobile
+                  ? {
+                      opacity: 1,
+                      y: -12,
+                      scale: 1,
+                      borderColor: "hsl(var(--primary))",
+                      boxShadow: "none",
+                    }
+                  : {
+                      opacity: 1,
+                      y: 0,
+                      scale: 1,
+                      borderColor: "rgba(255,255,255,0.1)",
+                      boxShadow: "none",
+                    }
+              }
+              whileHover={
+                !isMobile
+                  ? {
+                      y: -12,
+                      borderColor: "hsl(var(--primary))",
+                      boxShadow: "0 30px 60px -12px rgba(250, 204, 21, 0.25)",
+                    }
+                  : {}
+              }
               viewport={{ margin: "-25% 0px -25% 0px" }}
-              transition={{ 
+              transition={{
                 duration: 0.4,
-                ease: "easeOut"
+                ease: "easeOut",
               }}
               className="group relative overflow-hidden rounded-2xl border bg-surface-2 transition-colors duration-500"
             >
@@ -65,21 +75,20 @@ export const Portfolio = () => {
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
-                
-                {/* Category Badge (Top-Left) */}
+
                 <div className="absolute top-6 left-6 z-10">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1 text-[10px] font-black uppercase tracking-[0.15em] text-background shadow-2xl">
                     {p.tag}
                   </span>
                 </div>
 
-                {/* Integrated Smoky Vignette Overlay (Ultra-Subtle for Mobile/Tablet) */}
                 <div className="absolute inset-x-0 bottom-0 h-[28%] sm:h-[32%] bg-gradient-to-t from-black/90 via-black/30 to-transparent backdrop-blur-[1px] flex flex-col justify-end p-5 sm:p-8">
                   <h3 className="font-display text-base sm:text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
                     {p.title}
                   </h3>
                   <p className="mt-1 inline-flex items-center gap-1.5 text-[10px] sm:text-sm font-medium text-white/60">
-                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-primary" /> {p.location}
+                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-primary" />
+                    {p.location}
                   </p>
                 </div>
               </div>
@@ -87,35 +96,24 @@ export const Portfolio = () => {
           ))}
         </div>
 
-        {/* View All Button with Responsive Interaction */}
-        <div className="mt-20 flex justify-center">
-          <motion.button
-            initial={{ 
-              opacity: 0.6, 
-              y: 0, 
-              borderColor: "rgba(255,255,255,0.2)",
-              color: "rgba(255,255,255,0.6)"
-            }}
-            whileInView={isMobile ? { 
-              opacity: 1, 
-              y: -5,
-              borderColor: "hsl(var(--primary))",
-              color: "hsl(var(--primary))",
-              boxShadow: "0 10px 30px -10px rgba(250, 204, 21, 0.3)"
-            } : {}}
-            whileHover={!isMobile ? {
-              y: -5,
-              borderColor: "hsl(var(--primary))",
-              color: "hsl(var(--primary))",
-              boxShadow: "0 10px 30px -10px rgba(250, 204, 21, 0.3)"
-            } : {}}
-            viewport={{ margin: "-10% 0px -10% 0px" }}
-            transition={{ duration: 0.3 }}
-            className="group relative inline-flex items-center gap-3 rounded-full border px-10 py-4 text-sm font-bold uppercase tracking-widest transition-all hover:bg-primary/5"
-          >
-            View All
-            <span className="transition-transform group-hover:translate-x-1">→</span>
-          </motion.button>
+        <div className="mt-12 flex justify-center lg:hidden">
+          <Button asChild size="default" className="px-6">
+            <Link to="/portfolio">
+              View More
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+
+        <div className="mt-16 hidden lg:flex justify-center">
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button asChild size="lg" className="h-14 px-8 text-base">
+              <Link to="/portfolio">
+                View More
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </div>
     </section>
