@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export const Hero = () => {
   return (
-    <section id="top" className="relative min-h-[100svh] flex items-end pb-20 md:pb-12 overflow-hidden">
+    <section id="top" className="relative min-h-[100svh] flex items-end pb-16 md:pb-24 lg:pb-32 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <img
           src={heroImage}
@@ -22,7 +22,7 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
 
       <div className="container relative z-10 pt-28 pb-10 md:pb-0">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,21 +44,21 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-balance"
+            className="font-display mt-5 text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-balance"
           >
             Toronto&apos;s most <span className="text-primary">trusted</span> electrician.
           </motion.h1>
 
-          <div className="mt-8 flex flex-row gap-2 md:gap-3">
+          <div className="mt-8 flex flex-row gap-2 md:gap-4">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex-1 sm:flex-none"
+              className="flex-1 md:flex-none"
             >
-              <Button asChild size="lg" className="w-full h-11 sm:h-12 px-3 sm:px-8 text-xs sm:text-base relative overflow-hidden group">
+              <Button asChild size="lg" className="w-full h-11 md:h-14 px-3 md:px-8 text-xs md:text-base relative overflow-hidden group">
                 <a href={SITE.phoneHref}>
                   <motion.span 
                     animate={{ x: ["-100%", "200%"] }}
@@ -66,9 +66,10 @@ export const Hero = () => {
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12"
                   />
                   <span className="ring-ripple inline-flex mr-2">
-                    <Phone className="h-3 w-3 sm:h-4 sm:w-4" />
+                    <Phone className="h-3 w-3 md:h-4 md:w-4" />
                   </span>
-                  <span className="whitespace-nowrap">Call Now</span>
+                  <span className="whitespace-nowrap hidden md:inline">Call {SITE.phone}</span>
+                  <span className="whitespace-nowrap md:hidden">Call Now</span>
                 </a>
               </Button>
             </motion.div>
@@ -79,11 +80,13 @@ export const Hero = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex-1 sm:flex-none"
+              className="flex-1 md:flex-none"
             >
-              <Button asChild size="lg" variant="outline" className="w-full h-11 sm:h-12 px-3 sm:px-8 text-xs sm:text-base">
+              <Button asChild size="lg" variant="outline" className="w-full h-11 md:h-14 px-3 md:px-8 text-xs md:text-base">
                 <a href="#contact" className="whitespace-nowrap">
-                  Estimate <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 ml-1" />
+                  <span className="hidden md:inline">Get Free Estimate</span>
+                  <span className="md:hidden">Estimate</span>
+                  <ArrowRight className="h-3 w-3 md:h-4 md:w-4 ml-1 md:ml-2" />
                 </a>
               </Button>
             </motion.div>

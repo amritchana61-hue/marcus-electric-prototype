@@ -55,7 +55,7 @@ export const Header = () => {
           </AnimatePresence>
         </a>
 
-        <nav className="hidden md:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1">
           {NAV.map((n) => (
             <a
               key={n.href}
@@ -67,10 +67,10 @@ export const Header = () => {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <a
             href={SITE.phoneHref}
-            className="hidden lg:inline-flex items-center gap-1.5 text-sm font-medium text-foreground-muted hover:text-foreground transition-colors"
+            className="hidden xl:inline-flex items-center gap-1.5 text-sm font-medium text-foreground-muted hover:text-foreground transition-colors"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-60" />
@@ -86,7 +86,7 @@ export const Header = () => {
         <button
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden grid h-10 w-10 place-items-center rounded-md hover:bg-surface-2 transition-colors relative z-50"
+          className="lg:hidden grid h-10 w-10 place-items-center rounded-md hover:bg-surface-2 transition-colors relative z-50"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -101,7 +101,7 @@ export const Header = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 bg-background/40 backdrop-blur-md z-40 md:hidden"
+              className="fixed inset-0 bg-background/40 backdrop-blur-md z-40 lg:hidden"
             />
             
             {/* Mobile Menu Content */}
@@ -109,7 +109,7 @@ export const Header = () => {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="md:hidden border-t border-border bg-background/95 backdrop-blur-lg relative z-50"
+              className="lg:hidden border-t border-border bg-background/95 backdrop-blur-lg relative z-50"
             >
               <nav className="container mx-auto flex flex-col py-3">
                 {NAV.map((n) => (
