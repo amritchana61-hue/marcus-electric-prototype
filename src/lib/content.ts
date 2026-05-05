@@ -43,11 +43,17 @@ export const SERVICES = [
 import portfolioRes from "@/assets/portfolio-residential.jpg";
 import portfolioCom from "@/assets/portfolio-commercial.jpg";
 import portfolioLand from "@/assets/portfolio-landscape.jpg";
+import portfolioEV from "@/assets/portfolio-ev.png";
+import portfolioOffice from "@/assets/portfolio-office.png";
+import portfolioSmart from "@/assets/portfolio-smart.png";
 
 export const PORTFOLIO = [
   { tag: "Residential", title: "Modern Kitchen Renovation", location: "Leslieville", image: portfolioRes },
   { tag: "Commercial", title: "Downtown Office Complex", location: "Financial District", image: portfolioCom },
   { tag: "Landscape", title: "Backyard Oasis Lighting", location: "Forest Hill", image: portfolioLand },
+  { tag: "Residential", title: "EV Charger Installation", location: "Etobicoke", image: portfolioEV },
+  { tag: "Commercial", title: "High-End Retail Lighting", location: "Yorkville", image: portfolioOffice },
+  { tag: "Residential", title: "Smart Home Integration", location: "Bridle Path", image: portfolioSmart },
 ];
 
 export const TESTIMONIALS = [
