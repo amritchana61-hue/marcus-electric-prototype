@@ -22,6 +22,17 @@ export const Contact = () => {
             Tell us about your project. Most quotes go out the same day.
           </p>
 
+          <div className="mx-auto mt-8 overflow-hidden rounded-xl border border-border md:max-w-2xl lg:hidden">
+            <img
+              src="/contact-quote.png"
+              alt="Electrician preparing a project estimate"
+              width={1536}
+              height={1024}
+              loading="lazy"
+              className="aspect-video h-full w-full object-cover"
+            />
+          </div>
+
           <div className="mt-10 hidden overflow-hidden rounded-xl border border-border lg:block">
             <img
               src="/contact-quote.png"
