@@ -89,7 +89,7 @@ export const Services = () => {
               </motion.article>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
