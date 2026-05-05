@@ -1,7 +1,6 @@
 import { Quote } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import aboutImg from "@/assets/about-marcus.jpg";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 
@@ -38,10 +37,10 @@ export const About = () => {
           >
             <div className="overflow-hidden rounded-xl border border-border">
               <img
-                src={aboutImg}
+                src="/contact-electrician.png"
                 alt="Marcus working in an electrical panel"
-                width={1024}
-                height={1280}
+                width={1536}
+                height={1024}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
               />

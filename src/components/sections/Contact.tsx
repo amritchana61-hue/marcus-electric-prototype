@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Send, Check } from "lucide-react";
+import { Send, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { SITE } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 
 export const Contact = () => {
@@ -23,39 +22,16 @@ export const Contact = () => {
             Tell us about your project. Most quotes go out the same day.
           </p>
 
-          <ul className="mt-10 space-y-4">
-            <li className="flex items-start gap-4">
-              <span className="grid h-11 w-11 place-items-center rounded-md border border-border bg-background text-foreground">
-                <Phone className="h-4 w-4" />
-              </span>
-              <div>
-                <div className="text-xs uppercase tracking-wider text-foreground-subtle">Call</div>
-                <a href={SITE.phoneHref} className="text-lg font-semibold text-foreground hover:text-primary">
-                  {SITE.phone}
-                </a>
-              </div>
-            </li>
-            <li className="flex items-start gap-4">
-              <span className="grid h-11 w-11 place-items-center rounded-md border border-border bg-background text-foreground">
-                <Mail className="h-4 w-4" />
-              </span>
-              <div>
-                <div className="text-xs uppercase tracking-wider text-foreground-subtle">Email</div>
-                <a href={`mailto:${SITE.email}`} className="text-foreground hover:text-primary">
-                  {SITE.email}
-                </a>
-              </div>
-            </li>
-            <li className="flex items-start gap-4">
-              <span className="grid h-11 w-11 place-items-center rounded-md border border-border bg-background text-foreground">
-                <MapPin className="h-4 w-4" />
-              </span>
-              <div>
-                <div className="text-xs uppercase tracking-wider text-foreground-subtle">Service area</div>
-                <div className="text-foreground">{SITE.region}</div>
-              </div>
-            </li>
-          </ul>
+          <div className="mt-10 hidden overflow-hidden rounded-xl border border-border lg:block">
+            <img
+              src="/contact-electrician.png"
+              alt="Electrician testing a residential electrical panel"
+              width={1200}
+              height={800}
+              loading="lazy"
+              className="aspect-[3/2] h-full w-full object-cover"
+            />
+          </div>
         </div>
         </Reveal>
 
