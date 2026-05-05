@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Marcus Electric — Refined Dark Design System
+ * All colors must be HSL.
+ */
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 240 6% 4%;            /* #0A0A0B page base */
+    --surface-1: 240 6% 7%;             /* #111114 alternating sections */
+    --surface-2: 240 7% 10%;            /* #15151A cards */
+    --foreground: 0 0% 100%;
+    --foreground-muted: 240 5% 65%;
+    --foreground-subtle: 240 4% 46%;
+
+    --card: 240 7% 10%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 7% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primary — amber, used sparingly */
+    --primary: 45 93% 47%;              /* #FACC15 */
+    --primary-hover: 45 93% 55%;
+    --primary-foreground: 240 10% 4%;
+    --primary-glow: 45 93% 47% / 0.25;
+
+    --secondary: 240 6% 14%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 6% 14%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 240 6% 14%;
+    --accent-foreground: 0 0% 100%;
+
+    --emergency: 0 84% 60%;
+    --emergency-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 5% 16%;               /* #27272A */
+    --border-hover: 240 5% 26%;         /* #3F3F46 */
+    --input: 240 5% 16%;
+    --ring: 45 93% 47%;
+
+    --radius: 0.75rem;
+
+    /* Shadows */
+    --shadow-card: 0 1px 2px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 32px hsl(var(--primary-glow));
+
+    /* Layout */
+    --header-h: 72px;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  section[id] {
+    scroll-margin-top: var(--header-h);
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty  { text-wrap: pretty; }
+
+  .surface-1 { background-color: hsl(var(--surface-1)); }
+  .surface-2 { background-color: hsl(var(--surface-2)); }
+
+  .glow-primary {
+    box-shadow: 0 0 24px hsl(var(--primary) / 0.35);
+  }
+  .glow-primary-strong {
+    box-shadow: 0 0 32px hsl(var(--primary) / 0.5);
+  }
+  .glow-emergency {
+    box-shadow: 0 0 28px hsl(var(--emergency) / 0.35);
+  }
+
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 6px;
+    height: 1px;
+    background: hsl(var(--primary));
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+
+  .ring-ripple {
+    position: relative;
+  }
+  .ring-ripple::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    border: 1px solid hsl(var(--primary-foreground) / 0.6);
+    opacity: 0;
+    animation: ring-ripple 6s ease-out infinite;
+    pointer-events: none;
+  }
+
+  .animate-shine {
+    background: linear-gradient(
+      110deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 65%
+    );
+    background-size: 200% 100%;
+    animation: shine 4s linear infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+@keyframes shine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes ring-ripple {
+  0% { opacity: 0; transform: scale(0.85); }
+  8% { opacity: 0.9; }
+  30% { opacity: 0; transform: scale(1.6); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
