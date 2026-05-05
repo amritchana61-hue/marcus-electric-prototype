@@ -22,21 +22,25 @@ export const Portfolio = () => {
           {PORTFOLIO.map((p, i) => (
             <motion.article 
               key={p.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ 
+                opacity: 0.6, 
+                y: 0, 
+                borderColor: "rgba(255,255,255,0.1)",
+                scale: 0.98
+              }}
               whileInView={{ 
                 opacity: 1, 
-                y: 0,
+                y: -12,
+                scale: 1,
                 borderColor: "hsl(var(--primary))",
-                translateY: -8,
-                boxShadow: "0 25px 50px -12px rgba(250, 204, 21, 0.2)"
+                boxShadow: "0 30px 60px -12px rgba(250, 204, 21, 0.25)"
               }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ margin: "-25% 0px -25% 0px" }}
               transition={{ 
-                duration: 0.7, 
-                delay: i * 0.1,
+                duration: 0.5,
                 ease: "easeOut"
               }}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-surface-2 transition-all duration-500"
+              className="group relative overflow-hidden rounded-2xl border bg-surface-2 transition-colors duration-500"
             >
               <div className="aspect-[4/5] overflow-hidden relative">
                 <img
@@ -67,6 +71,31 @@ export const Portfolio = () => {
               </div>
             </motion.article>
           ))}
+        </div>
+
+        {/* View All Button with Passing Glow */}
+        <div className="mt-20 flex justify-center">
+          <motion.button
+            initial={{ 
+              opacity: 0.6, 
+              y: 0, 
+              borderColor: "rgba(255,255,255,0.2)",
+              color: "rgba(255,255,255,0.6)"
+            }}
+            whileInView={{ 
+              opacity: 1, 
+              y: -5,
+              borderColor: "hsl(var(--primary))",
+              color: "hsl(var(--primary))",
+              boxShadow: "0 10px 30px -10px rgba(250, 204, 21, 0.3)"
+            }}
+            viewport={{ margin: "-10% 0px -10% 0px" }}
+            transition={{ duration: 0.4 }}
+            className="group relative inline-flex items-center gap-3 rounded-full border px-10 py-4 text-sm font-bold uppercase tracking-widest transition-all hover:bg-primary/5"
+          >
+            View All
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </motion.button>
         </div>
       </div>
     </section>
