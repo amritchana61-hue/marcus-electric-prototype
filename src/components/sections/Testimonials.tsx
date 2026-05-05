@@ -3,14 +3,20 @@ import { Star } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/utils";
-import placeholderImg from "@/assets/about-marcus.jpg";
+import avatarOne from "@/assets/about-marcus.jpg";
+import avatarTwo from "@/assets/hero-team.jpg";
+import avatarThree from "@/assets/portfolio-residential.jpg";
+
+const AVATARS = [avatarOne, avatarTwo, avatarThree];
 
 const TestimonialCard = ({
   testimonial,
+  avatar,
   active,
   onClick,
 }: {
   testimonial: (typeof TESTIMONIALS)[number];
+  avatar: string;
   active: boolean;
   onClick: () => void;
 }) => (
@@ -38,7 +44,7 @@ const TestimonialCard = ({
         </span>
       </div>
       <img
-        src={placeholderImg}
+        src={avatar}
         alt=""
         aria-hidden="true"
         loading="lazy"
@@ -83,7 +89,12 @@ export const Testimonials = () => {
           >
             {TESTIMONIALS.map((t, i) => (
               <div key={t.name} className="w-full shrink-0 px-0.5">
-                <TestimonialCard testimonial={t} active={active === i} onClick={() => setActive(i)} />
+                <TestimonialCard
+                  testimonial={t}
+                  avatar={AVATARS[i % AVATARS.length]}
+                  active={active === i}
+                  onClick={() => setActive(i)}
+                />
               </div>
             ))}
           </div>
@@ -96,7 +107,12 @@ export const Testimonials = () => {
         >
           {TESTIMONIALS.map((t, i) => (
             <Reveal key={t.name} delay={i * 100}>
-              <TestimonialCard testimonial={t} active={active === i} onClick={() => setActive(i)} />
+              <TestimonialCard
+                testimonial={t}
+                avatar={AVATARS[i % AVATARS.length]}
+                active={active === i}
+                onClick={() => setActive(i)}
+              />
             </Reveal>
           ))}
         </div>
