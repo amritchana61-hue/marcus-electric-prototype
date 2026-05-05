@@ -16,11 +16,12 @@ export const TrustStrip = () => {
               className="flex flex-col items-center text-center gap-3"
             >
               <motion.div
-                animate={{
+                whileInView={{
                   rotate: [0, -10, 10, -10, 10, 0],
                   color: ["#ffffff", "#FACC15", "#FACC15", "#FACC15", "#FACC15", "#ffffff"],
                   scale: [1, 1.1, 1.1, 1.1, 1.1, 1]
                 }}
+                viewport={{ once: false, margin: "-50px" }}
                 transition={{
                   duration: 1.2,
                   repeat: Infinity,
