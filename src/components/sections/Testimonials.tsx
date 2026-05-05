@@ -44,7 +44,7 @@ export const Testimonials = () => {
                 className={cn(
                   "rounded-xl border bg-surface-2 p-6 flex flex-col cursor-pointer transition-all duration-300 h-full",
                   active === i
-                    ? "border-primary/60 glow-primary -translate-y-1"
+                    ? "border-border glow-primary -translate-y-1"
                     : "border-border hover:border-border-hover",
                 )}
               >

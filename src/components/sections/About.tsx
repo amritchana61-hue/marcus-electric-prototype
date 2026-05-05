@@ -41,7 +41,7 @@ export const About = () => {
               personally trained.
             </p>
 
-            <figure className="mt-8 rounded-xl border-l-2 border-primary bg-surface-1 p-5">
+            <figure className="mt-8 rounded-xl border-l-2 border-border bg-surface-1 p-5">
               <Quote className="h-5 w-5 text-primary" />
               <blockquote className="mt-2 font-display text-lg sm:text-xl text-foreground italic">
                 &ldquo;If I wouldn&apos;t put it in my own home, I won&apos;t put it in yours.&rdquo;

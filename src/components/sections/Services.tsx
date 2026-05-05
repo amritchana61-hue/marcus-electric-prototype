@@ -42,7 +42,6 @@ export const Services = () => {
                   }
                 }}
                 whileInView={{ 
-                  borderColor: "hsl(var(--primary))",
                   translateY: -5,
                   transition: { delay: (i * 0.15) + 0.5, duration: 0.4 }
                 }}

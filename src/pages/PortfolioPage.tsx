@@ -35,7 +35,7 @@ const PortfolioPage = () => {
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {PORTFOLIO.map((p) => (
                 <Reveal key={p.title}>
-                  <article className="group overflow-hidden rounded-2xl border border-border bg-surface-2 transition-all duration-500 hover:-translate-y-2 hover:border-primary hover:shadow-[0_30px_60px_-12px_rgba(250,204,21,0.25)]">
+                  <article className="group overflow-hidden rounded-2xl border border-border bg-surface-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_60px_-12px_rgba(250,204,21,0.25)]">
                     <div className="aspect-[4/5] overflow-hidden">
                       <img
                         src={p.image}

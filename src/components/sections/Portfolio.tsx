@@ -39,7 +39,6 @@ export const Portfolio = () => {
                       opacity: 1,
                       y: -12,
                       scale: 1,
-                      borderColor: "hsl(var(--primary))",
                       boxShadow: "none",
                     }
                   : {
@@ -54,7 +53,6 @@ export const Portfolio = () => {
                 !isMobile
                   ? {
                       y: -12,
-                      borderColor: "hsl(var(--primary))",
                       boxShadow: "0 30px 60px -12px rgba(250, 204, 21, 0.25)",
                     }
                   : {}
