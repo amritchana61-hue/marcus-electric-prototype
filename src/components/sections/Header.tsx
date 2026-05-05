@@ -49,7 +49,7 @@ export const Header = () => {
                 transition={{ duration: 0.15 }}
                 className="font-display text-base sm:text-lg font-bold tracking-tight animate-shine"
               >
-                Marcus <span className="text-foreground-muted font-medium">Electric</span>
+                Marcus <span className="text-primary font-medium">Electric</span>
               </motion.span>
             )}
           </AnimatePresence>
@@ -86,36 +86,55 @@ export const Header = () => {
         <button
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden grid h-10 w-10 place-items-center rounded-md hover:bg-surface-2 transition-colors"
+          className="md:hidden grid h-10 w-10 place-items-center rounded-md hover:bg-surface-2 transition-colors relative z-50"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      {open && (
-        <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-lg animate-fade-up">
-          <nav className="container mx-auto flex flex-col py-3">
-            {NAV.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                onClick={() => setOpen(false)}
-                className="py-3 text-base font-medium text-foreground-muted hover:text-foreground transition-colors"
-              >
-                {n.label}
-              </a>
-            ))}
-            <div className="mt-2 grid grid-cols-2 gap-2 pb-2">
-              <Button asChild variant="outline" size="sm">
-                <a href={SITE.phoneHref}>{SITE.phone}</a>
-              </Button>
-              <Button asChild size="sm">
-                <a href="#contact" onClick={() => setOpen(false)}>Get Estimate</a>
-              </Button>
-            </div>
-          </nav>
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <>
+            {/* Background Blur Overlay */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setOpen(false)}
+              className="fixed inset-0 bg-background/40 backdrop-blur-md z-40 md:hidden"
+            />
+            
+            {/* Mobile Menu Content */}
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="md:hidden border-t border-border bg-background/95 backdrop-blur-lg relative z-50"
+            >
+              <nav className="container mx-auto flex flex-col py-3">
+                {NAV.map((n) => (
+                  <a
+                    key={n.href}
+                    href={n.href}
+                    onClick={() => setOpen(false)}
+                    className="py-3 text-base font-medium text-foreground-muted hover:text-foreground transition-colors"
+                  >
+                    {n.label}
+                  </a>
+                ))}
+                <div className="mt-2 grid grid-cols-2 gap-2 pb-2">
+                  <Button asChild variant="outline" size="sm">
+                    <a href={SITE.phoneHref}>{SITE.phone}</a>
+                  </Button>
+                  <Button asChild size="sm">
+                    <a href="#contact" onClick={() => setOpen(false)}>Get Estimate</a>
+                  </Button>
+                </div>
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
