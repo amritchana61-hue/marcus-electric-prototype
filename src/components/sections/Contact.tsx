@@ -13,7 +13,7 @@ export const Contact = () => {
     <section id="contact" className="py-20 md:py-28 surface-1 border-t border-border">
       <div className="container grid gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
-        <div>
+        <div className="text-center lg:text-left">
           <span className="text-xs font-semibold tracking-widest uppercase text-primary">Get in touch</span>
           <h2 className="font-display mt-3 text-3xl sm:text-4xl md:text-5xl font-bold text-balance">
             Free estimates. Honest answers.
@@ -24,8 +24,8 @@ export const Contact = () => {
 
           <div className="mt-10 hidden overflow-hidden rounded-xl border border-border lg:block">
             <img
-              src="/contact-electrician.png"
-              alt="Electrician testing a residential electrical panel"
+              src="/contact-quote.png"
+              alt="Electrician preparing a project estimate"
               width={1200}
               height={800}
               loading="lazy"
@@ -35,13 +35,13 @@ export const Contact = () => {
         </div>
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal delay={120} className="lg:h-full">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             setSent(true);
           }}
-          className="rounded-xl border border-border bg-surface-2 p-6 md:p-8 transition-colors hover:border-border-hover"
+          className="rounded-xl border border-border bg-surface-2 p-6 transition-colors hover:border-border-hover md:p-8 lg:flex lg:h-full lg:flex-col lg:justify-center"
         >
           {sent ? (
             <div className="py-12 text-center">

@@ -35,7 +35,7 @@ export const About = () => {
             viewport={{ margin: "-20% 0px -20% 0px" }}
             transition={{ duration: 0.4, ease: "easeOut" }}
           >
-            <div className="overflow-hidden rounded-xl border border-border">
+            <div className="aspect-[4/5] overflow-hidden rounded-xl border border-border lg:aspect-auto">
               <img
                 src="/contact-electrician.png"
                 alt="Marcus working in an electrical panel"
