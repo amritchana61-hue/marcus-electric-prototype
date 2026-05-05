@@ -1,14 +1,41 @@
 import { Quote } from "lucide-react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import aboutImg from "@/assets/about-marcus.jpg";
 import { Reveal } from "@/components/Reveal";
 import { CountUp } from "@/components/CountUp";
 
 export const About = () => {
+  const [isBelowDesktop, setIsBelowDesktop] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(max-width: 1023px)");
+    const onChange = () => setIsBelowDesktop(mql.matches);
+    onChange();
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
   return (
     <section id="about" className="py-20 md:py-28">
       <div className="container grid gap-12 lg:grid-cols-2 lg:items-center">
         <Reveal>
-          <div className="relative">
+          <motion.div
+            className="relative"
+            initial={{ boxShadow: "none" }}
+            whileInView={
+              isBelowDesktop
+                ? { boxShadow: "0 30px 60px -12px rgba(250, 204, 21, 0.25)" }
+                : {}
+            }
+            whileHover={
+              !isBelowDesktop
+                ? { boxShadow: "0 30px 60px -12px rgba(250, 204, 21, 0.25)" }
+                : {}
+            }
+            viewport={{ margin: "-20% 0px -20% 0px" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
             <div className="overflow-hidden rounded-xl border border-border">
               <img
                 src={aboutImg}
@@ -26,7 +53,7 @@ export const About = () => {
               </div>
               <div className="mt-1 text-xs text-foreground-subtle">Serving Toronto since 2014</div>
             </div>
-          </div>
+          </motion.div>
         </Reveal>
 
         <Reveal delay={100}>
@@ -36,9 +63,8 @@ export const About = () => {
               One electrician. One standard.
             </h2>
             <p className="mt-5 text-foreground-muted text-pretty">
-              I started Marcus Electric to bring back what I felt was missing from the trade — clear pricing, clean
-              work, and a real person on the other end of the phone. Every job is done by me or a tradesperson I&apos;ve
-              personally trained.
+              I started Marcus Electric to bring back clear pricing, clean work, and a real person on the other end of
+              the phone.
             </p>
 
             <figure className="mt-8 rounded-xl border-l-2 border-border bg-surface-1 p-5">
@@ -47,7 +73,7 @@ export const About = () => {
                 &ldquo;If I wouldn&apos;t put it in my own home, I won&apos;t put it in yours.&rdquo;
               </blockquote>
               <figcaption className="mt-3 text-sm text-foreground-subtle">
-                Marcus Thompson · Master Electrician, ESA Licensed
+                Marcus Thompson &middot; Master Electrician, ESA Licensed
               </figcaption>
             </figure>
 
@@ -61,7 +87,7 @@ export const About = () => {
               <div className="border-l border-border pl-4">
                 <div className="font-display text-xl sm:text-2xl font-bold text-foreground">
                   <CountUp end={4.9} decimals={1} />
-                  <span className="text-primary">★</span>
+                  <span className="text-primary">&#9733;</span>
                 </div>
                 <div className="mt-1 text-xs text-foreground-subtle">Google rating</div>
               </div>
