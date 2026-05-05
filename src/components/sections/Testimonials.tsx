@@ -18,7 +18,7 @@ const TestimonialCard = ({
     onClick={onClick}
     className={cn(
       "rounded-xl border bg-surface-2 p-6 flex flex-col cursor-pointer transition-all duration-300 h-full",
-      active ? "border-border glow-primary -translate-y-1" : "border-border hover:border-border-hover",
+      active ? "border-border -translate-y-1" : "border-border hover:border-border-hover",
     )}
   >
     <div className="flex gap-0.5">
@@ -68,7 +68,7 @@ export const Testimonials = () => {
     <section id="testimonials" className="py-20 md:py-28">
       <div className="container">
         <Reveal>
-          <div className="mx-auto max-w-2xl text-center md:mx-0 md:text-left">
+          <div className="mx-auto max-w-2xl text-center md:mx-0 md:text-left lg:mx-auto lg:text-center">
             <span className="text-xs font-semibold tracking-widest uppercase text-primary">Reviews</span>
             <h2 className="font-display mt-3 text-3xl sm:text-4xl md:text-5xl font-bold text-balance">
               What Toronto homeowners say
