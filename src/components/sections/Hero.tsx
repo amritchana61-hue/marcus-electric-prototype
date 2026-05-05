@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export const Hero = () => {
   return (
-    <section id="top" className="relative min-h-[100svh] flex items-end pb-20 md:items-center md:pb-0 overflow-hidden">
+    <section id="top" className="relative min-h-[100svh] flex items-end pb-20 md:pb-12 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <img
           src={heroImage}
@@ -21,8 +21,8 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-background/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
 
-      <div className="container relative z-10 pt-28 pb-10 md:pb-20">
-        <div className="max-w-2xl">
+      <div className="container relative z-10 pt-28 pb-10 md:pb-0">
+        <div className="max-w-3xl">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
