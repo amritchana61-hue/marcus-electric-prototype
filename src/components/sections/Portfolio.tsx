@@ -2,8 +2,11 @@ import { PORTFOLIO } from "@/lib/content";
 import { MapPin } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Portfolio = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section id="portfolio" className="py-20 md:py-28 surface-1 border-y border-border overflow-hidden">
       <div className="container">
@@ -28,16 +31,27 @@ export const Portfolio = () => {
                 borderColor: "rgba(255,255,255,0.1)",
                 scale: 0.98
               }}
-              whileInView={{ 
+              whileInView={isMobile ? { 
                 opacity: 1, 
                 y: -12,
                 scale: 1,
                 borderColor: "hsl(var(--primary))",
                 boxShadow: "0 30px 60px -12px rgba(250, 204, 21, 0.25)"
+              } : { 
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                borderColor: "rgba(255,255,255,0.1)",
+                boxShadow: "none"
               }}
+              whileHover={!isMobile ? {
+                y: -12,
+                borderColor: "hsl(var(--primary))",
+                boxShadow: "0 30px 60px -12px rgba(250, 204, 21, 0.25)"
+              } : {}}
               viewport={{ margin: "-25% 0px -25% 0px" }}
               transition={{ 
-                duration: 0.5,
+                duration: 0.4,
                 ease: "easeOut"
               }}
               className="group relative overflow-hidden rounded-2xl border bg-surface-2 transition-colors duration-500"
@@ -73,7 +87,7 @@ export const Portfolio = () => {
           ))}
         </div>
 
-        {/* View All Button with Passing Glow */}
+        {/* View All Button with Responsive Interaction */}
         <div className="mt-20 flex justify-center">
           <motion.button
             initial={{ 
@@ -82,15 +96,21 @@ export const Portfolio = () => {
               borderColor: "rgba(255,255,255,0.2)",
               color: "rgba(255,255,255,0.6)"
             }}
-            whileInView={{ 
+            whileInView={isMobile ? { 
               opacity: 1, 
               y: -5,
               borderColor: "hsl(var(--primary))",
               color: "hsl(var(--primary))",
               boxShadow: "0 10px 30px -10px rgba(250, 204, 21, 0.3)"
-            }}
+            } : {}}
+            whileHover={!isMobile ? {
+              y: -5,
+              borderColor: "hsl(var(--primary))",
+              color: "hsl(var(--primary))",
+              boxShadow: "0 10px 30px -10px rgba(250, 204, 21, 0.3)"
+            } : {}}
             viewport={{ margin: "-10% 0px -10% 0px" }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3 }}
             className="group relative inline-flex items-center gap-3 rounded-full border px-10 py-4 text-sm font-bold uppercase tracking-widest transition-all hover:bg-primary/5"
           >
             View All
