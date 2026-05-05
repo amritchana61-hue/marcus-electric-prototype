@@ -55,13 +55,13 @@ export const Portfolio = () => {
                   </span>
                 </div>
 
-                {/* Integrated Smoky Vignette Overlay (Subtle & Integrated) */}
-                <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-t from-black/80 via-black/20 to-transparent backdrop-blur-[1px] flex flex-col justify-end p-6 sm:p-8">
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
+                {/* Integrated Smoky Vignette Overlay (Ultra-Subtle for Mobile/Tablet) */}
+                <div className="absolute inset-x-0 bottom-0 h-[28%] sm:h-[32%] bg-gradient-to-t from-black/90 via-black/30 to-transparent backdrop-blur-[1px] flex flex-col justify-end p-5 sm:p-8">
+                  <h3 className="font-display text-base sm:text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
                     {p.title}
                   </h3>
-                  <p className="mt-1.5 inline-flex items-center gap-2 text-sm font-medium text-white/60">
-                    <MapPin className="h-4 w-4 text-primary" /> {p.location}
+                  <p className="mt-1 inline-flex items-center gap-1.5 text-[10px] sm:text-sm font-medium text-white/60">
+                    <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-primary" /> {p.location}
                   </p>
                 </div>
               </div>
