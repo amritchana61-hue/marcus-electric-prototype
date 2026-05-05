@@ -8,10 +8,10 @@ export const Portfolio = () => {
     <section id="portfolio" className="py-20 md:py-28 surface-1 border-y border-border overflow-hidden">
       <div className="container">
         <Reveal>
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-4 mb-12">
+          <div className="flex flex-col items-center text-center gap-4 mb-16 mx-auto">
             <div className="max-w-2xl">
               <span className="text-xs font-semibold tracking-widest uppercase text-primary">Recent work</span>
-              <h2 className="font-display mt-3 text-3xl sm:text-4xl md:text-5xl font-bold text-balance">
+              <h2 className="font-display mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-balance">
                 Work we stand behind.
               </h2>
             </div>
@@ -38,7 +38,7 @@ export const Portfolio = () => {
               }}
               className="group relative overflow-hidden rounded-2xl border border-border bg-surface-2 transition-all duration-500"
             >
-              <div className="aspect-[4/5] lg:aspect-[4/3] overflow-hidden relative">
+              <div className="aspect-[4/5] overflow-hidden relative">
                 <img
                   src={p.image}
                   alt={p.title}
@@ -49,19 +49,19 @@ export const Portfolio = () => {
                 />
                 
                 {/* Category Badge (Top-Left) */}
-                <div className="absolute top-5 left-5 z-10">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1 text-[10px] font-black uppercase tracking-widest text-background shadow-xl">
+                <div className="absolute top-6 left-6 z-10">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1 text-[10px] font-black uppercase tracking-[0.15em] text-background shadow-2xl">
                     {p.tag}
                   </span>
                 </div>
 
-                {/* Smoky Bottom Glassmorphism Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 pt-20 pb-6 px-6 bg-gradient-to-t from-black/90 via-black/40 to-transparent backdrop-blur-[2px]">
-                  <h3 className="font-display text-lg sm:text-xl font-bold text-white tracking-tight leading-tight">
+                {/* Integrated Smoky Vignette Overlay (Subtle & Integrated) */}
+                <div className="absolute inset-x-0 bottom-0 h-[35%] bg-gradient-to-t from-black/80 via-black/20 to-transparent backdrop-blur-[1px] flex flex-col justify-end p-6 sm:p-8">
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight leading-tight">
                     {p.title}
                   </h3>
-                  <p className="mt-1.5 inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-white/70">
-                    <MapPin className="h-3.5 w-3.5 text-primary" /> {p.location}
+                  <p className="mt-1.5 inline-flex items-center gap-2 text-sm font-medium text-white/60">
+                    <MapPin className="h-4 w-4 text-primary" /> {p.location}
                   </p>
                 </div>
               </div>
